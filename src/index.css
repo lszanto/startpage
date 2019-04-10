@@ -1,5 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700');
 
+/* cheap reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -9,6 +20,6 @@ body {
   background-color: #5a5766;
 }
 
-html, body, .App, .App > div {
+html, body, .App {
   height: 100vh;
 }

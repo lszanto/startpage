@@ -1,0 +1,12 @@
+.AddLovedPage {
+    float: right;
+}
+
+.AddLovedPage button {
+    height: 3rem;
+    font-weight: 400;
+    border: 0;
+    background-color: #fff;
+    color: #000;
+    padding: 0.75rem;
+}

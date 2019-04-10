@@ -1,0 +1,17 @@
+.LovedPages {
+    width: 40%;
+    margin: 0 auto;
+}
+
+.top {
+    width: 100%;
+    clear: both;
+    padding-top: 3rem;
+}
+
+h4 {
+    font-weight: 300;
+    color: #fff;
+    font-size: 2.5rem;
+    display: inline-block;
+}
