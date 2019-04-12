@@ -17,7 +17,7 @@ class LovedPagesList extends React.Component {
           <ul>
             {this.state.pages.map((page, index) => {
               return (
-                <li><FontAwesomeIcon icon="anchor" /> <LovedPage key={index} page={page} /></li>
+                <li key={index} ><FontAwesomeIcon icon="anchor" /> <LovedPage page={page} /></li>
               )
             })}
           </ul>
