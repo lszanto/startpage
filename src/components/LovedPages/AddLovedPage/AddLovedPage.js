@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { addPage, addingPage } from '../../../actions/index';
 import './AddLovedPage.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { timingSafeEqual } from 'crypto';
 
 function mapDispatchToProps(dispatch) {
   return {
