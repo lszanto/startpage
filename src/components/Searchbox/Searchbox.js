@@ -1,5 +1,5 @@
 import React from 'react';
-import Config from '../Config';
+import Config from '../../config/Config';
 import './Searchbox.css';
 
 class Searchbox extends React.Component {
@@ -8,15 +8,18 @@ class Searchbox extends React.Component {
     this.state = {
         searchTerm: ''
     };
+
+    this._handleChange = this._handleChange.bind(this);
+    this._handleKeyPress = this._handleKeyPress.bind(this);
   }
 
-  _handleChange = e => {
+  _handleChange(e) {
       this.setState({
           searchTerm: e.target.value
       });
   }
 
-  _handleKeyPress = e => {
+  _handleKeyPress(e) {
       if (e.key === 'Enter') {
           window.open(Config.Searchbox.url + this.state.searchTerm);
 
