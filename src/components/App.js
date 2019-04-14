@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { loadPages } from '../actions/index';
+import { getPagesFromLocalstorage } from '../actions/index';
 import './App.css';
 import Searchbox from './Searchbox/Searchbox';
 import LovedPages from './LovedPages/LovedPages';
@@ -11,7 +11,7 @@ library.add(faHeart, faPlusSquare, faAnchor);
 
 function mapDispatchToProps(dispatch) {
   return {
-    loadPages: pages => dispatch(loadPages(pages))
+    getPagesFromLocalstorage: a => dispatch(getPagesFromLocalstorage(a))
   };
 }
 
@@ -26,21 +26,7 @@ class ConnectedApp extends Component {
   }
 
   componentDidMount() {
-    this.loadPagesFromLocalStorage();
-  }
-
-  loadPagesFromLocalStorage() {
-    this.checkLocalStorage();
-    this.props.loadPages([
-      {
-        url: 'https://reddit.com/',
-        title: 'Reddit'
-      }
-    ]);
-  }
-
-  checkLocalStorage() {
-    if (localStorage.getItem('pages') === null) localStorage.setItem('pages', JSON.stringify({ pages: [] }));
+    this.props.getPagesFromLocalstorage();
   }
 }
 

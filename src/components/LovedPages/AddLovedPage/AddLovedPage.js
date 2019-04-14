@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addPage, addingPage, notAddingPage } from '../../../actions/index';
+import { addPage, addingPage } from '../../../actions/index';
 import './AddLovedPage.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -8,7 +8,6 @@ function mapDispatchToProps(dispatch) {
   return {
     addPage: page => dispatch(addPage(page)),
     addingPage: a => dispatch(addingPage(a)),
-    notAddingPage: a => dispatch(notAddingPage(a)),
   };
 }
 
@@ -58,8 +57,6 @@ class ConnectedAddLovedPage extends React.Component {
     });
 
     this.setState(this.initialState);
-
-    this.props.notAddingPage();
   }
 
   handleChange(e) {

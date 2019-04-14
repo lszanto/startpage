@@ -1,26 +1,35 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import './LovedPage.css';
+import { deletePage } from '../../../../actions/index';
 
-class LovedPage extends React.Component {
-  constructor(props) {
+function mapDispatchToProps(dispatch) {
+  return {
+    deletePage: page => dispatch(deletePage(page)),
+  };
+}
+
+class ConnectedLovedPage extends React.Component {
+  constructor() {
     super();
-    this.state = {
-        title: props.page.title,
-        url: props.page.url,
-    };
+
+    this.deletePage = this.deletePage.bind(this);
   }
 
   render() {
     return (
         <div className="LovedPage" >
-            <a href={this.state.url} target="_blank" rel="noopener noreferrer" >{this.state.title}</a>
+            <a href={this.props.page} target="_blank" rel="noopener noreferrer" >{this.props.page.title}</a> 
+            <button onClick={this.deletePage} >delete</button>
         </div>
     );
   }
 
-  componentDidMount() {
-    
+  deletePage(e) {
+    this.props.deletePage(this.props.page);
   }
 }
+
+const LovedPage = connect(null, mapDispatchToProps) (ConnectedLovedPage);
 
 export default LovedPage;
