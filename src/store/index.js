@@ -1,17 +1,17 @@
 import { createStore, compose, applyMiddleware } from 'redux';
-import rootReducers from '../reducers/index';
-import createSagaMiddleware from 'redux-saga';
-import localstorageSaga from '../sagas/localstorage-saga';
+import { createEpicMiddleware } from 'redux-observable';
+import rootReducers from '../reducers/root';
+import { rootEpic } from '../epics/root';
 
-const initialiseSagaMiddleware = createSagaMiddleware();
+const epicMiddleware = createEpicMiddleware();
 
 const storeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
     rootReducers,
-    storeEnhancers(applyMiddleware(initialiseSagaMiddleware))
+    storeEnhancers(applyMiddleware(epicMiddleware))
 );
 
-initialiseSagaMiddleware.run(localstorageSaga);
+epicMiddleware.run(rootEpic);
 
 export default store;
