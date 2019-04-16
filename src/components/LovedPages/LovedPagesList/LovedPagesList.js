@@ -8,20 +8,18 @@ const mapStateToProps = state => {
   return { pages: state.pages };
 };
 
-class ConnectedLovedPagesList extends React.Component {
-  render() {
-    return (
-        <div className="LovedPagesList" >
-          <ul>
-            {this.props.pages.map((page, index) => {
-              return (
-                <li key={index} ><FontAwesomeIcon icon="anchor" /> <LovedPage page={page} /></li>
-              )
-            })}
-          </ul>
-        </div>
-    );
-  }
+function ConnectedLovedPagesList(props) {
+  return (
+      <div className="LovedPagesList" >
+        <ul>
+          {props.pages.map((page, index) => {
+            return (
+              <li key={index} ><FontAwesomeIcon icon="anchor" /> <LovedPage page={page} /></li>
+            )
+          })}
+        </ul>
+      </div>
+  );
 }
 
 const LovedPagesList = connect(mapStateToProps) (ConnectedLovedPagesList);

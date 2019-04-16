@@ -5,9 +5,10 @@ import './App.css';
 import Searchbox from './Searchbox/Searchbox';
 import LovedPages from './LovedPages/LovedPages';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faHeart, faPlusSquare, faAnchor } from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faPlusSquare, faAnchor, faBan } from '@fortawesome/free-solid-svg-icons';
+import AddLovedPage from './AddLovedPage/AddLovedPage';
 
-library.add(faHeart, faPlusSquare, faAnchor);
+library.add(faHeart, faPlusSquare, faAnchor, faBan);
 
 function mapDispatchToProps(dispatch) {
   return {
@@ -15,14 +16,26 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
+const mapStateToProps = state => {
+  return { isAddingPage: state.isAddingPage };
+};
+
 class ConnectedApp extends Component {
   render() {
-    return (
-      <div className="App">
-        <Searchbox />
-        <LovedPages />
-      </div>
-    );
+    if (this.props.isAddingPage) {
+      return (
+        <div className="App">
+          <AddLovedPage />
+        </div>
+      );
+    } else {
+      return (
+        <div className="App">
+          <Searchbox />
+          <LovedPages />
+        </div>
+      );
+    }
   }
 
   componentDidMount() {
@@ -30,6 +43,6 @@ class ConnectedApp extends Component {
   }
 }
 
-const App = connect(null, mapDispatchToProps) (ConnectedApp);
+const App = connect(mapStateToProps, mapDispatchToProps) (ConnectedApp);
 
 export default App;

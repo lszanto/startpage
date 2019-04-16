@@ -9,25 +9,13 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-class ConnectedLovedPage extends React.Component {
-  constructor() {
-    super();
-
-    this.deletePage = this.deletePage.bind(this);
-  }
-
-  render() {
-    return (
-        <div className="LovedPage" >
-            <a href={this.props.page} target="_blank" rel="noopener noreferrer" >{this.props.page.title}</a> 
-            <button onClick={this.deletePage} >delete</button>
-        </div>
-    );
-  }
-
-  deletePage(e) {
-    this.props.deletePage(this.props.page);
-  }
+function ConnectedLovedPage(props) {
+  return (
+      <div className="LovedPage" >
+          <a href={props.page.url} target="_blank" rel="noopener noreferrer" >{props.page.title}</a> 
+          <button onClick={() => props.deletePage(props.page)} >delete</button>
+      </div>
+  );
 }
 
 const LovedPage = connect(null, mapDispatchToProps) (ConnectedLovedPage);

@@ -1,19 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addPage, addingPage } from '../../../actions/index';
+import { addPage, notAddingPage } from '../../actions/index';
 import './AddLovedPage.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function mapDispatchToProps(dispatch) {
   return {
     addPage: page => dispatch(addPage(page)),
-    addingPage: a => dispatch(addingPage(a)),
+    notAddingPage: () => dispatch(notAddingPage()),
   };
 }
-
-const mapStateToProps = state => {
-  return { isAddingPage: state.isAddingPage };
-};
 
 class ConnectedAddLovedPage extends React.Component {
   constructor() {
@@ -29,25 +25,26 @@ class ConnectedAddLovedPage extends React.Component {
       url: '',
     };
 
-    this.addingPage = this.addingPage.bind(this);
     this.addPage = this.addPage.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
   render() {
-    let disabled = this.props.isAddingPage ? 'disabled' : '';
-    let addForm = this.props.isAddingPage ? this.getAddForm() : '';
-
     return (
         <div className="AddLovedPage" >
-          <button onClick={this.addingPage} disabled={disabled} ><FontAwesomeIcon icon="plus-square" /> add</button>
-          {addForm}
+          <div className="addform" >
+            <h5>add page</h5>
+            <input type="text" placeholder="title" id="title" value={this.state.title} onChange={this.handleChange} />
+            <input type="text" placeholder="url" id="url" value={this.state.url} onChange={this.handleChange} />
+            <button onClick={this.addPage} ><FontAwesomeIcon icon="heart" /> save</button>
+            <button onClick={this.props.notAddingPage} ><FontAwesomeIcon icon="ban" /> cancel</button>
+          </div>
         </div>
     );
   }
 
-  addingPage(e) {
-    this.props.addingPage();
+  componentDidMount() {
+    document.getElementById('title').focus();
   }
 
   addPage(e) {
@@ -76,6 +73,6 @@ class ConnectedAddLovedPage extends React.Component {
   }
 }
 
-const AddLovedPage = connect(mapStateToProps, mapDispatchToProps) (ConnectedAddLovedPage);
+const AddLovedPage = connect(null, mapDispatchToProps) (ConnectedAddLovedPage);
 
 export default AddLovedPage;

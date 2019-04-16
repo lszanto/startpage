@@ -1,27 +1,30 @@
 import React from 'react';
-import './LovedPages.css';
-import AddLovedPage from './AddLovedPage/AddLovedPage';
+import { connect } from 'react-redux';
+import './LovedPages.css'; 
+import { addingPage } from '../../actions/index';
 import LovedPagesList from './LovedPagesList/LovedPagesList';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-class LovedPages extends React.Component {
-  render() {
-    return (
-        <div className="LovedPages" >
-            <div className="top" >
-              <h4>pages you <FontAwesomeIcon icon="heart" /></h4>
-
-              <AddLovedPage />
-            </div>
-
-            <LovedPagesList />
-        </div>
-    );
-  }
-
-  componentDidMount() {
-    this.setState({ someKey: 'otherValue' });
-  }
+function mapDispatchToProps(dispatch) {
+  return {
+    addingPage: a => dispatch(addingPage(a)),
+  };
 }
+
+function ConnectedLovedPages(props) {
+  return (
+      <div className="LovedPages" >
+          <div className="top" >
+            <h4>pages you <FontAwesomeIcon icon="heart" /></h4>
+
+            <button onClick={props.addingPage} ><FontAwesomeIcon icon="plus-square" /> add</button>
+          </div>
+
+          <LovedPagesList />
+      </div>
+  );
+}
+
+const LovedPages = connect(null, mapDispatchToProps) (ConnectedLovedPages);
 
 export default LovedPages;
