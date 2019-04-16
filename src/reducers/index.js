@@ -1,14 +1,31 @@
-import { ADD_PAGE, LOAD_PAGES, ADDING_PAGE, DELETE_PAGE, NOT_ADDING_PAGE } from '../constants/action-types';
+import { findIndex } from 'lodash';
+import { ADD_PAGE, LOAD_PAGES, ADDING_PAGE, DELETE_PAGE, HIDE_LOVED_PAGE_FORM, EDITING_PAGE, EDIT_PAGE } from '../constants/action-types';
 
 const initialState = {
     pages: [],
-    isAddingPage: false,
+    isFormShown: false,
+    editingPage: null,
 };
 
 function rootReducer(state = initialState, action) {
     if (action.type === ADD_PAGE) {
         return Object.assign({}, state, {
             pages: state.pages.concat(action.payload)
+        });
+    }  else if (action.type === ADDING_PAGE) {
+        return Object.assign({}, state, {
+            isFormShown: true,
+            formMode: 'add',
+        });
+    } else if (action.type === EDIT_PAGE) {
+        return Object.assign({}, state, {
+            pages: Object.assign([], state.pages, { [findIndex(state.pages, { uuid: action.payload.uuid })]: action.payload}),
+        });
+    } else if (action.type === EDITING_PAGE) {
+        return Object.assign({}, state, {
+            isFormShown: true,
+            formMode: 'edit',
+            editingPage: action.payload,
         });
     } else if(action.type === DELETE_PAGE) {
         return Object.assign({}, state, {
@@ -18,13 +35,10 @@ function rootReducer(state = initialState, action) {
         return Object.assign({}, state, {
             pages: action.payload
         });
-    } else if (action.type === ADDING_PAGE) {
+    } else if (action.type === HIDE_LOVED_PAGE_FORM) {
         return Object.assign({}, state, {
-            isAddingPage: true
-        });
-    } else if (action.type === NOT_ADDING_PAGE) {
-        return Object.assign({}, state, {
-            isAddingPage: false
+            isFormShown: false,
+            editingPage: null,
         });
     }
 

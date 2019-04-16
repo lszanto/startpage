@@ -6,7 +6,7 @@ import Searchbox from './Searchbox/Searchbox';
 import LovedPages from './LovedPages/LovedPages';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faHeart, faPlusSquare, faAnchor, faBan } from '@fortawesome/free-solid-svg-icons';
-import AddLovedPage from './AddLovedPage/AddLovedPage';
+import LovedPageForm from './LovedPageForm/LovedPageForm';
 
 library.add(faHeart, faPlusSquare, faAnchor, faBan);
 
@@ -17,15 +17,17 @@ function mapDispatchToProps(dispatch) {
 }
 
 const mapStateToProps = state => {
-  return { isAddingPage: state.isAddingPage };
+  return {
+    isFormShown: state.isFormShown,
+  };
 };
 
 class ConnectedApp extends Component {
   render() {
-    if (this.props.isAddingPage) {
+    if (this.props.isFormShown) {
       return (
         <div className="App">
-          <AddLovedPage />
+          <LovedPageForm />
         </div>
       );
     } else {

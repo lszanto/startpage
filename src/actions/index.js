@@ -1,4 +1,4 @@
-import { ADD_PAGE, LOAD_PAGES, ADDING_PAGE, NOT_ADDING_PAGE, DELETE_PAGE, GET_PAGES_FROM_LOCALSTORAGE } from '../constants/action-types';
+import { ADD_PAGE, LOAD_PAGES, ADDING_PAGE, HIDE_LOVED_PAGE_FORM, DELETE_PAGE, GET_PAGES_FROM_LOCALSTORAGE, EDIT_PAGE, EDITING_PAGE } from '../constants/action-types';
 
 export function addPage(payload) {
     return {
@@ -14,6 +14,20 @@ export function deletePage(payload) {
     };
 }
 
+export function editingPage(payload) {
+    return {
+        type: EDITING_PAGE,
+        payload
+    }
+}
+
+export function editPage(payload) {
+    return {
+        type: EDIT_PAGE,
+        payload
+    }
+}
+
 export function loadPages(payload) {
     return {
         type: LOAD_PAGES,
@@ -27,9 +41,9 @@ export function addingPage() {
     };
 }
 
-export function notAddingPage() {
+export function hideLovedPageForm() {
     return {
-        type: NOT_ADDING_PAGE
+        type: HIDE_LOVED_PAGE_FORM
     };
 }
 
