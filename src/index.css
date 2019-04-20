@@ -19,7 +19,3 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #5a5766;
 }
-
-html, body, .App {
-  height: 100vh;
-}
