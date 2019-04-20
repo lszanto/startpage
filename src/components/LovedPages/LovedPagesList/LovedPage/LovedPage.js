@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import './LovedPage.css';
 import { deletePage, editingPage } from '../../../../actions/index';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function mapDispatchToProps(dispatch) {
   return {
@@ -13,9 +14,15 @@ function mapDispatchToProps(dispatch) {
 function ConnectedLovedPage(props) {
   return (
       <div className="LovedPage" >
+        <div className="page" >
+          <FontAwesomeIcon icon="anchor" />
           <a href={props.page.url} target="_blank" rel="noopener noreferrer" >{props.page.title}</a> 
-          <button onClick={() => props.deletePage(props.page)} >delete</button>
-          <button onClick={() => props.editingPage(props.page)} >edit</button>
+        </div>
+          
+          <div className="actions" >
+            <button onClick={() => props.deletePage(props.page)} ><FontAwesomeIcon icon="trash-alt" /></button>
+            <button onClick={() => props.editingPage(props.page)} ><FontAwesomeIcon icon="pencil-alt" /></button>
+          </div>
       </div>
   );
 }

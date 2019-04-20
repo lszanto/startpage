@@ -5,10 +5,10 @@ import './App.css';
 import Searchbox from './Searchbox/Searchbox';
 import LovedPages from './LovedPages/LovedPages';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faHeart, faPlusSquare, faAnchor, faBan } from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faPlusSquare, faAnchor, faBan, faPencilAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import LovedPageForm from './LovedPageForm/LovedPageForm';
 
-library.add(faHeart, faPlusSquare, faAnchor, faBan);
+library.add(faHeart, faPlusSquare, faAnchor, faBan, faPencilAlt, faTrashAlt);
 
 function mapDispatchToProps(dispatch) {
   return {
