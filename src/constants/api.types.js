@@ -1,0 +1,3 @@
+export const GET_WEATHER = 'GET_WEATHER';
+export const GET_WEATHER_FAILED = 'GET_WEATHER_FAILED';
+export const LOAD_WEATHER = 'LOAD_WEATHER';

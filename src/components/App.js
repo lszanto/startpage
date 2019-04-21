@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getPagesFromLocalstorage } from '../actions/index';
+import { getPagesFromLocalstorage } from '../actions/lovedpage.actions';
 import './App.css';
 import Searchbox from './Searchbox/Searchbox';
 import LovedPages from './LovedPages/LovedPages';
@@ -8,6 +8,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { faHeart, faPlusSquare, faAnchor, faBan, faPencilAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import LovedPageForm from './LovedPageForm/LovedPageForm';
 import DateTimeDisplay from './DateTimeDisplay/DateTimeDisplay';
+import WeatherDisplay from './WeatherDisplay/WeatherDisplay';
 
 library.add(faHeart, faPlusSquare, faAnchor, faBan, faPencilAlt, faTrashAlt);
 
@@ -19,7 +20,7 @@ function mapDispatchToProps(dispatch) {
 
 const mapStateToProps = state => {
   return {
-    isFormShown: state.isFormShown,
+    isFormShown: state.lovedpage.isFormShown,
   };
 };
 
@@ -35,6 +36,7 @@ class ConnectedApp extends Component {
       return (
         <div className="App">
           <DateTimeDisplay />
+          <WeatherDisplay />
           <Searchbox />
           <LovedPages />
         </div>

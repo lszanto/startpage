@@ -1,4 +1,4 @@
-import { ADD_PAGE, LOAD_PAGES, ADDING_PAGE, HIDE_LOVED_PAGE_FORM, DELETE_PAGE, GET_PAGES_FROM_LOCALSTORAGE, EDIT_PAGE, EDITING_PAGE } from '../constants/action-types';
+import { ADD_PAGE, LOAD_PAGES, ADDING_PAGE, HIDE_LOVED_PAGE_FORM, DELETE_PAGE, GET_PAGES_FROM_LOCALSTORAGE, EDIT_PAGE, EDITING_PAGE } from '../constants/lovedpage.types';
 
 export function addPage(payload) {
     return {

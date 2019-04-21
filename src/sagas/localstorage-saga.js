@@ -1,6 +1,6 @@
 import { findIndex } from 'lodash';
 import { takeEvery, call, put } from 'redux-saga/effects';
-import { ADD_PAGE, HIDE_LOVED_PAGE_FORM, PAGE_ADD_FAILED, GET_PAGES_FROM_LOCALSTORAGE, GET_PAGES_LOCALSTORAGE_FAILED, LOAD_PAGES, PAGE_DELETED, PAGE_DELETE_FAILED, DELETE_PAGE, PAGE_EDIT_FAILED, EDIT_PAGE } from '../constants/action-types';
+import { ADD_PAGE, HIDE_LOVED_PAGE_FORM, PAGE_ADD_FAILED, GET_PAGES_FROM_LOCALSTORAGE, GET_PAGES_LOCALSTORAGE_FAILED, LOAD_PAGES, PAGE_DELETED, PAGE_DELETE_FAILED, DELETE_PAGE, PAGE_EDIT_FAILED, EDIT_PAGE } from '../constants/lovedpage.types';
 
 export default function* watcherSaga() {
     yield takeEvery(ADD_PAGE, addWorkerSaga);

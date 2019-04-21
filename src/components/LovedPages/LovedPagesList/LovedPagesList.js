@@ -4,7 +4,7 @@ import './LovedPagesList.css';
 import LovedPage from './LovedPage/LovedPage';
 
 const mapStateToProps = state => {
-  return { pages: state.pages };
+  return { pages: state.lovedpage.pages };
 };
 
 function ConnectedLovedPagesList(props) {

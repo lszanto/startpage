@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './LovedPage.css';
-import { deletePage, editingPage } from '../../../../actions/index';
+import { deletePage, editingPage } from '../../../../actions/lovedpage.actions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function mapDispatchToProps(dispatch) {

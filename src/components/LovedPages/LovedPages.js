@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './LovedPages.css'; 
-import { addingPage } from '../../actions/index';
+import { addingPage } from '../../actions/lovedpage.actions';
 import LovedPagesList from './LovedPagesList/LovedPagesList';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 

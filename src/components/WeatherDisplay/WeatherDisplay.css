@@ -1,0 +1,8 @@
+.WeatherDisplay {
+    width: 40%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 15rem;
+    color: #fff;
+    margin-top: 3rem;
+}

@@ -5,7 +5,7 @@ class DateTimeDisplay extends React.Component {
     constructor() {
         super();
 
-        let t = new Date().toLocaleString();
+        let t = this.formatDateString(new Date());
 
         this.state = {
             time: t,
@@ -25,12 +25,15 @@ class DateTimeDisplay extends React.Component {
     }
 
     updateTime() {
-        let now = new Date();
-        let t = now.getHours() + ':' + now.getMinutes() + ':' + now.getSeconds();
+        let t = this.formatDateString(new Date());
 
         this.setState({
             time: t,
         });
+    }
+
+    formatDateString(t) {
+        return t.getHours() + ':' + t.getMinutes() + ':' + t.getSeconds();
     }
 }
 

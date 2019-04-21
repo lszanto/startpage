@@ -2,7 +2,7 @@ import React from 'react';
 import './LovedPageForm.css';
 import { connect } from 'react-redux';
 import { v1 } from 'uuid';
-import { hideLovedPageForm, addPage, editPage } from '../../actions/index';
+import { hideLovedPageForm, addPage, editPage } from '../../actions/lovedpage.actions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function mapDispatchToProps(dispatch) {
@@ -15,8 +15,8 @@ function mapDispatchToProps(dispatch) {
 
 const mapStateToProps = state => {
   return {
-    formMode: state.formMode,
-    editingPage: state.editingPage,
+    formMode: state.lovedpage.formMode,
+    editingPage: state.lovedpage.editingPage,
   }
 };
 
