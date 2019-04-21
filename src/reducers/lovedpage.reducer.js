@@ -12,7 +12,7 @@ export default function lovedpage(state = initialState, action) {
         return Object.assign({}, state, {
             pages: state.pages.concat(action.payload)
         });
-    }  else if (action.type === ADDING_PAGE) {
+    } else if (action.type === ADDING_PAGE) {
         return Object.assign({}, state, {
             isFormShown: true,
             formMode: 'add',

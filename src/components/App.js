@@ -1,20 +1,24 @@
-import React, { Component } from 'react';
+import React from 'react';
+import './App.css';
 import { connect } from 'react-redux';
 import { getPagesFromLocalstorage } from '../actions/lovedpage.actions';
-import './App.css';
-import Searchbox from './Searchbox/Searchbox';
-import LovedPages from './LovedPages/LovedPages';
+import { getWeather } from '../actions/api.actions';
+
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faHeart, faPlusSquare, faAnchor, faBan, faPencilAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faPlusSquare, faAnchor, faBan, faPencilAlt, faTrashAlt, faSpinner, faSmog, faPooStorm, faCloudRain, faCloudShowersHeavy, faSnowflake, faCloud, faWind, faTemperatureHigh } from '@fortawesome/free-solid-svg-icons';
+
 import LovedPageForm from './LovedPageForm/LovedPageForm';
 import DateTimeDisplay from './DateTimeDisplay/DateTimeDisplay';
 import WeatherDisplay from './WeatherDisplay/WeatherDisplay';
+import Searchbox from './Searchbox/Searchbox';
+import LovedPages from './LovedPages/LovedPages';
 
-library.add(faHeart, faPlusSquare, faAnchor, faBan, faPencilAlt, faTrashAlt);
+library.add(faHeart, faPlusSquare, faAnchor, faBan, faPencilAlt, faTrashAlt, faSpinner, faSmog, faPooStorm, faCloudRain, faCloudShowersHeavy, faSnowflake, faCloud, faWind, faTemperatureHigh);
 
 function mapDispatchToProps(dispatch) {
   return {
-    getPagesFromLocalstorage: a => dispatch(getPagesFromLocalstorage(a))
+    getPagesFromLocalstorage: a => dispatch(getPagesFromLocalstorage(a)),
+    getWeather: () => dispatch(getWeather()),
   };
 }
 
@@ -24,17 +28,17 @@ const mapStateToProps = state => {
   };
 };
 
-class ConnectedApp extends Component {
+class ConnectedApp extends React.Component {
   render() {
     if (this.props.isFormShown) {
       return (
-        <div className="App">
+        <div className="App" >
           <LovedPageForm />
         </div>
       );
     } else {
       return (
-        <div className="App">
+        <div className="App" >
           <DateTimeDisplay />
           <WeatherDisplay />
           <Searchbox />
@@ -46,6 +50,7 @@ class ConnectedApp extends Component {
 
   componentDidMount() {
     this.props.getPagesFromLocalstorage();
+    this.props.getWeather();
   }
 }
 

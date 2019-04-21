@@ -12,7 +12,7 @@ export function getWeatherFailed() {
     };
 }
 
-export function loadWeather() {
+export function loadWeather(payload) {
     return {
         type: LOAD_WEATHER,
         payload
