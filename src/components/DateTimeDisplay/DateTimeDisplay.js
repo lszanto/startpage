@@ -21,7 +21,14 @@ class DateTimeDisplay extends React.Component {
     }
 
     componentDidMount() {
-        setInterval(this.updateTime.bind(this), 999);
+        this.timer = setInterval(this.updateTime.bind(this), 999);
+    }
+
+    componentWillUnmount() {
+        if (this.timer) {
+            clearTimeout(this.timer);
+            this.timer = 0;
+        }
     }
 
     updateTime() {
