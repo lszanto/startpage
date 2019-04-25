@@ -33,7 +33,7 @@ class DateTimeDisplay extends React.Component {
     }
 
     formatDateString(t) {
-        return t.getHours() + ':' + t.getMinutes() + ':' + t.getSeconds();
+        return t.toLocaleString('en-AU', { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true });
     }
 }
 
