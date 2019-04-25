@@ -5,6 +5,7 @@ const initialState = {
     weatherLoading: false,
     weatherTemperature: 0,
     weatherDescription: '',
+    weatherIcon: 'spinner',
 };
 
 export default function api(state = initialState, action) {
