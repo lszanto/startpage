@@ -51,6 +51,8 @@ class ConnectedApp extends React.Component {
   componentDidMount() {
     this.props.getPagesFromLocalstorage();
     this.props.getWeather();
+
+    setTimeout(() => this.props.getWeather(), 1000 * 60 * 5);
   }
 }
 
