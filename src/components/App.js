@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 import { connect } from 'react-redux';
 import { getPagesFromLocalstorage } from '../actions/lovedpage.actions';
-import { getWeather } from '../actions/api.actions';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faHeart, faPlusSquare, faAnchor, faBan, faPencilAlt, faTrashAlt, faSpinner, faSmog, faPooStorm, faCloudRain, faCloudShowersHeavy, faSnowflake, faCloud, faWind, faTemperatureHigh } from '@fortawesome/free-solid-svg-icons';
@@ -18,7 +17,6 @@ library.add(faHeart, faPlusSquare, faAnchor, faBan, faPencilAlt, faTrashAlt, faS
 function mapDispatchToProps(dispatch) {
   return {
     getPagesFromLocalstorage: a => dispatch(getPagesFromLocalstorage(a)),
-    getWeather: () => dispatch(getWeather()),
   };
 }
 
@@ -50,16 +48,6 @@ class ConnectedApp extends React.Component {
 
   componentDidMount() {
     this.props.getPagesFromLocalstorage();
-    this.props.getWeather();
-
-    this.weatherInterval = setInterval(() => this.props.getWeather(), 1000 * 60 * 5);
-  }
-
-  componentWillUnmount() {
-    if (this.weatherInterval) {
-      clearInterval(this.weatherInterval);
-      this.weatherInterval = 0;
-    }
   }
 }
 

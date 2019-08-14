@@ -17,7 +17,7 @@ const Config = {
         ash: '',
         squall: '',
         tornado: 'wind',
-        clear: '',
+        clear: 'cloud',
         clouds: 'cloud'
     }
 };

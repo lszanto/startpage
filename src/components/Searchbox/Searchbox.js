@@ -15,7 +15,7 @@ function Searchbox() {
 
     return (
         <div className="Searchbox" >
-            <input type="text" name="searchTerm" id="searchTerm" {...searchTerm} onKeyPress={handleKeyPress} placeholder={Config.Searchbox.message} />
+            <input type="text" name="searchTerm" id="searchTerm" onChange={searchTerm.onChange} value={searchTerm.value} onKeyPress={handleKeyPress} placeholder={Config.Searchbox.message} />
         </div>
     );
 }

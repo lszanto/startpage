@@ -1,28 +1,37 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './WeatherDisplay.css';
-import { connect } from 'react-redux';
+import Config from '../../config/Config';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+function WeatherDisplay(props) {
+    const [ weather, setWeather ] = useState({
+        loading: true,
+        icon: 'spinner',
+    });
 
-const mapStateToProps = state => {
-    return {
-        temperature: state.api.weatherTemperature,
-        icon: state.api.weatherIcon,
-        loading: state.api.weatherLoading,
-    };
-};
+    useEffect(() => {
+        async function fetchWeather() {
+            const resp = await fetch('https://api.openweathermap.org/data/2.5/weather?q=Castle%20Hill,AU&appid=5bd850fe6cc4c2da8605b42c46db9eab&units=metric');
+            const json = await resp.json();
 
-function ConnectedWeatherDisplay(props) {
+            await setWeather({
+                temperature: json.main.temp,
+                icon: Config.WeatherIcons[json.weather[0].main.toLowerCase()],
+                loading: false
+            });
+        }
+
+        fetchWeather();
+    }, []);
+
     return (
         <div className="WeatherDisplay" >
-            { props.loading
+            { weather.loading
                 ? <div className="weather-loading" >weather loading <FontAwesomeIcon icon="spinner" spin /></div>
-                : <div className="weather" >{props.temperature} <FontAwesomeIcon icon="temperature-high" /> <FontAwesomeIcon icon={props.icon} /></div>
+                : <div className="weather" >{weather.temperature} <FontAwesomeIcon icon="temperature-high" /> <FontAwesomeIcon icon={weather.icon} /></div>
             }
         </div>
     );
 }
-
-const WeatherDisplay = connect(mapStateToProps) (ConnectedWeatherDisplay);
 
 export default WeatherDisplay;

@@ -28,11 +28,13 @@ class ConnectedLovedPageForm extends React.Component {
         this.state = {
           title: this.props.editingPage.title,
           url: this.props.editingPage.url,
+          category: this.props.editingPage.category,
         };
       } else {
         this.state = {
           title: '',
           url: '',
+          category: '',
         };
       }
   
@@ -49,6 +51,7 @@ class ConnectedLovedPageForm extends React.Component {
               <h5>{this.props.formMode} page</h5>
               <input type="text" placeholder="title" id="title" value={this.state.title} onChange={this.handleChange} />
               <input type="text" placeholder="url" id="url" value={this.state.url} onChange={this.handleChange} />
+              <input type="text" placeholder="category" id="category" value={this.state.category} onChange={this.handleChange} />
               <button onClick={this.submitForm} disabled={disabled} ><FontAwesomeIcon icon="heart" /> save</button>
               <button onClick={this.props.hideLovedPageForm} ><FontAwesomeIcon icon="ban" /> cancel</button>
             </div>
@@ -66,12 +69,14 @@ class ConnectedLovedPageForm extends React.Component {
           uuid: v1(),
           title: this.state.title,
           url: this.state.url,
+          category: this.state.category,
         });
       } else if(this.props.formMode === 'edit') {
         this.props.editPage({
           uuid: this.props.editingPage.uuid,
           title: this.state.title,
           url: this.state.url,
+          category: this.state.category,
         });
       }
     }
